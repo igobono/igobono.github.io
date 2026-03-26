@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>igobono - A marketplace where your skills have value</title>
+  <meta name="description" content="igobono is a community marketplace where you earn and spend bonos, a social currency, by trading goods, services, and skills. No cash needed.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f8f9fa;
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 280px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: #555;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      flex: 1;
+      min-width: 140px;
+      max-width: 200px;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .feature h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #1a1a1a;
+    }
+
+    .feature p {
+      font-size: 0.78rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-section p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .email-form {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .email-form input[type="email"] {
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      width: 300px;
+      max-width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .email-form input[type="email"]:focus {
+      border-color: #27ae60;
+    }
+
+    .email-form button {
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .email-form button:hover {
+      background: #219a52;
+    }
+
+    .success-message {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .social-links {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #27ae60;
+    }
+
+    footer {
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.4rem; }
+      .subtitle { font-size: 0.95rem; }
+      .features { gap: 16px; }
+      .feature { min-width: 100px; }
+      .email-form input[type="email"] { width: 100%; }
+      .email-form { flex-direction: column; align-items: center; }
+      .email-form button { width: 300px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="igobono" class="logo">
+
+    <h1>A marketplace where your skills have value.<br>Even without cash.</h1>
+
+    <p class="subtitle">
+      Trade goods, services, and skills with people near you.
+      Earn and spend "bonos," a social currency. No cash needed.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">+</div>
+        <h3>List or request</h3>
+        <p>Offer your skills and goods, or post what you need</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#9733;</div>
+        <h3>Earn bonos</h3>
+        <p>Every trade earns you bonos to spend on what you need</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#9829;</div>
+        <h3>Build community</h3>
+        <p>Connect with neighbors and strengthen your local economy</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <p>Be the first to know when we launch. Join the waitlist.</p>
+      <form class="email-form" id="signup-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="Enter your email address" required>
+        <input type="hidden" name="_subject" value="New igobono waitlist signup">
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit">Join the Waitlist</button>
+      </form>
+      <div class="success-message" id="success-msg">
+        You're on the list! We'll notify you when igobono launches.
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://facebook.com/igobono" target="_blank">Facebook</a>
+      <a href="https://twitter.com/igobono" target="_blank">X</a>
+    </div>
+
+    <footer>&copy; 2026 igobono. All rights reserved.</footer>
+  </div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('success-msg').style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
