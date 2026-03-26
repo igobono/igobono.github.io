@@ -12,79 +12,67 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: #f8f9fa;
       color: #2c3e50;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    .container {
-      max-width: 800px;
-      width: 100%;
-      text-align: center;
+    .page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .logo {
-      max-width: 280px;
-      margin-bottom: 16px;
+      max-width: 200px;
+      margin-bottom: 8px;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: #1a1a1a;
-      margin-bottom: 10px;
-      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 12px;
+      line-height: 1.3;
     }
 
-    .subtitle {
-      font-size: 1.05rem;
+    .video-container {
+      width: 100%;
+      max-width: 640px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container video {
+      width: 100%;
+      display: block;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
       color: #555;
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-    }
-
-    .feature {
-      flex: 1;
-      min-width: 140px;
-      max-width: 200px;
-    }
-
-    .feature-icon {
-      font-size: 1.8rem;
-      margin-bottom: 6px;
-    }
-
-    .feature h3 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #1a1a1a;
-    }
-
-    .feature p {
-      font-size: 0.78rem;
-      color: #666;
+      text-align: center;
+      margin-bottom: 14px;
       line-height: 1.4;
     }
 
     .form-section {
-      margin-bottom: 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
     }
 
-    .form-section p {
-      font-size: 0.95rem;
+    .form-label {
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #333;
     }
 
@@ -92,16 +80,15 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      flex-wrap: wrap;
     }
 
     .email-form input[type="email"] {
-      padding: 12px 16px;
-      font-size: 1rem;
+      padding: 10px 14px;
+      font-size: 0.95rem;
       border: 2px solid #ddd;
       border-radius: 6px;
-      width: 300px;
-      max-width: 100%;
+      flex: 1;
+      min-width: 0;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -111,14 +98,15 @@
     }
 
     .email-form button {
-      padding: 12px 28px;
-      font-size: 1rem;
+      padding: 10px 22px;
+      font-size: 0.95rem;
       font-weight: 600;
       background: #27ae60;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      white-space: nowrap;
       transition: background 0.2s;
     }
 
@@ -130,78 +118,74 @@
       display: none;
       background: #d4edda;
       color: #155724;
-      padding: 12px 20px;
+      padding: 10px 16px;
       border-radius: 6px;
-      margin-top: 10px;
-      font-size: 0.95rem;
+      margin-top: 8px;
+      font-size: 0.9rem;
     }
 
-    .social-links {
-      margin-top: 16px;
+    .bottom-row {
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #999;
     }
 
-    .social-links a {
+    .bottom-row a {
       color: #888;
       text-decoration: none;
-      font-size: 0.85rem;
       transition: color 0.2s;
     }
 
-    .social-links a:hover {
+    .bottom-row a:hover {
       color: #27ae60;
     }
 
-    footer {
-      margin-top: 16px;
-      font-size: 0.75rem;
-      color: #aaa;
+    .dot {
+      color: #ccc;
+    }
+
+    @media (max-height: 700px) {
+      .logo { max-width: 150px; margin-bottom: 4px; }
+      h1 { font-size: 1.1rem; margin-bottom: 8px; }
+      .video-container { max-width: 480px; margin-bottom: 8px; }
+      .tagline { font-size: 0.85rem; margin-bottom: 10px; }
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 1.4rem; }
-      .subtitle { font-size: 0.95rem; }
-      .features { gap: 16px; }
-      .feature { min-width: 100px; }
+      .page { padding: 12px 16px; }
+      .logo { max-width: 150px; }
+      h1 { font-size: 1.1rem; }
+      .video-container { max-width: 100%; }
+      .email-form { flex-direction: column; }
       .email-form input[type="email"] { width: 100%; }
-      .email-form { flex-direction: column; align-items: center; }
-      .email-form button { width: 300px; max-width: 100%; }
+      .email-form button { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="page">
     <img src="logo.png" alt="igobono" class="logo">
 
-    <h1>A marketplace where your skills have value.<br>Even without cash.</h1>
+    <h1>A marketplace where your skills have value. Even without cash.</h1>
 
-    <p class="subtitle">
+    <div class="video-container">
+      <video controls preload="metadata" poster="">
+        <source src="igobono-video.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </div>
+
+    <p class="tagline">
       Trade goods, services, and skills with people near you.
       Earn and spend "bonos," a social currency. No cash needed.
     </p>
 
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">+</div>
-        <h3>List or request</h3>
-        <p>Offer your skills and goods, or post what you need</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">&#9733;</div>
-        <h3>Earn bonos</h3>
-        <p>Every trade earns you bonos to spend on what you need</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">&#9829;</div>
-        <h3>Build community</h3>
-        <p>Connect with neighbors and strengthen your local economy</p>
-      </div>
-    </div>
-
     <div class="form-section">
-      <p>Be the first to know when we launch. Join the waitlist.</p>
+      <p class="form-label">Join the waitlist. Be first when we launch.</p>
       <form class="email-form" id="signup-form" action="https://formspree.io/f/placeholder" method="POST">
         <input type="email" name="email" placeholder="Enter your email address" required>
         <input type="hidden" name="_subject" value="New igobono waitlist signup">
@@ -213,12 +197,13 @@
       </div>
     </div>
 
-    <div class="social-links">
+    <div class="bottom-row">
       <a href="https://facebook.com/igobono" target="_blank">Facebook</a>
+      <span class="dot">&middot;</span>
       <a href="https://twitter.com/igobono" target="_blank">X</a>
+      <span class="dot">&middot;</span>
+      <span>&copy; 2026 igobono</span>
     </div>
-
-    <footer>&copy; 2026 igobono. All rights reserved.</footer>
   </div>
 
   <script>
