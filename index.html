@@ -14,8 +14,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: #f8f9fa;
       color: #2c3e50;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -25,15 +24,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 1100px;
       width: 100%;
-      margin: 0 auto;
       padding: 12px 24px 0;
+    }
+
+    /* Everything constrained to same width */
+    .content-wrapper {
+      width: 100%;
+      max-width: 828px;
     }
 
     /* Top bar with logo */
     .top-bar {
       width: 100%;
+      max-width: 828px;
       display: flex;
       align-items: center;
       margin-bottom: 8px;
@@ -44,22 +48,23 @@
       height: auto;
     }
 
-    /* Headline - matches live site text-3xl, mono font */
+    /* Headline - mono font, constrained to video width */
     h1 {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
       font-size: 1.875rem;
       font-weight: 700;
       color: #1a1a1a;
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       line-height: 1.3;
-    }
-
-    /* Video - wide like the original */
-    .video-container {
       width: 100%;
       max-width: 828px;
-      margin-bottom: 14px;
+    }
+
+    /* Video */
+    .video-container {
+      width: 100%;
+      margin-bottom: 20px;
     }
 
     .video-container video {
@@ -68,14 +73,13 @@
       border-radius: 4px;
     }
 
-    /* Content row: tagline left, form right */
+    /* Content row: tagline left, form right - same width as video */
     .content-row {
       display: flex;
       width: 100%;
-      max-width: 828px;
-      gap: 24px;
+      gap: 32px;
       align-items: flex-start;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
     }
 
     .tagline {
@@ -146,43 +150,36 @@
       font-size: 0.95rem;
     }
 
-    /* Social icons - 50px like original */
+    /* Social icons - 50px like original site */
     .social-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 0;
-      padding: 8px 0;
+      gap: 16px;
+      padding: 12px 0;
     }
 
     .social-icon {
       display: inline-block;
       width: 50px;
       height: 50px;
-      position: relative;
-      overflow: hidden;
-      vertical-align: middle;
+      border-radius: 50%;
+      transition: opacity 0.2s;
     }
+
+    .social-icon:hover { opacity: 0.7; }
 
     .social-icon svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      fill-rule: evenodd;
+      width: 50px;
+      height: 50px;
     }
-
-    .social-icon:hover { opacity: 0.8; }
 
     /* Footer - dark like original */
     footer {
       width: 100%;
       background: #111827;
       color: white;
-      padding: 20px 0;
+      padding: 24px 0;
       text-align: center;
       margin-top: auto;
     }
@@ -192,25 +189,9 @@
     }
 
     /* Responsive */
-    @media (max-height: 720px) {
-      h1 { font-size: 1.4rem; margin-bottom: 8px; }
-      .video-container { max-width: 700px; margin-bottom: 10px; }
-      .content-row { margin-bottom: 8px; }
-      .tagline { font-size: 1.1rem; }
-      .social-row { padding: 4px 0; }
-    }
-
-    @media (max-height: 640px) {
-      h1 { font-size: 1.2rem; margin-bottom: 6px; }
-      .video-container { max-width: 580px; margin-bottom: 6px; }
-      .logo { width: 150px; }
-      .social-icon { width: 40px; height: 40px; }
-      footer { padding: 12px 0; }
-    }
-
-    @media (max-width: 700px) {
-      .content-row { flex-direction: column; gap: 12px; }
-      h1 { font-size: 1.3rem; }
+    @media (max-width: 860px) {
+      .content-row { flex-direction: column; gap: 16px; }
+      h1 { font-size: 1.4rem; }
       .logo { width: 150px; }
     }
   </style>
@@ -221,56 +202,49 @@
       <img src="igobono-logo.png" alt="Igobono Logo" class="logo">
     </div>
 
-    <h1>A marketplace where your skills have value. Even without cash.</h1>
+    <div class="content-wrapper">
+      <h1>A marketplace where your skills have value. Even without cash.</h1>
 
-    <div class="video-container">
-      <video controls preload="metadata" poster="homepage_hero.png">
-        <source src="igobono-video.mp4" type="video/mp4">
-        Your browser does not support video playback.
-      </video>
-    </div>
-
-    <div class="content-row">
-      <div class="tagline">
-        Trade goods, services, and skills with people near you.
-        Earn and spend "bonos," a social currency. No cash needed.
+      <div class="video-container">
+        <video controls preload="metadata" poster="homepage_hero.png">
+          <source src="igobono-video.mp4" type="video/mp4">
+          Your browser does not support video playback.
+        </video>
       </div>
-      <div class="form-section">
-        <p class="form-label">Join the waitlist. Be first when we launch.</p>
-        <form class="email-form" id="signup-form" action="https://formspree.io/f/xrblbdvq" method="POST">
-          <input type="email" name="email" placeholder="Enter your email address" required>
-          <input type="hidden" name="_subject" value="New igobono waitlist signup">
-          <input type="hidden" name="_captcha" value="false">
-          <button type="submit">Join the Waitlist</button>
-        </form>
-        <div class="success-message" id="success-msg">
-          You're on the list! We'll notify you when igobono launches.
+
+      <div class="content-row">
+        <div class="tagline">
+          Trade goods, services, and skills with people near you.
+          Earn and spend "bonos," a social currency. No cash needed.
+        </div>
+        <div class="form-section">
+          <p class="form-label">Join the waitlist. Be first when we launch.</p>
+          <form class="email-form" id="signup-form" action="https://formspree.io/f/xrblbdvq" method="POST">
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <input type="hidden" name="_subject" value="New igobono waitlist signup">
+            <input type="hidden" name="_captcha" value="false">
+            <button type="submit">Join the Waitlist</button>
+          </form>
+          <div class="success-message" id="success-msg">
+            You're on the list! We'll notify you when igobono launches.
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="social-row">
-      <!-- Facebook icon - 50px circular, brand color #3b5998 -->
-      <a href="https://facebook.com/igobono" target="_blank" class="social-icon" aria-label="facebook">
-        <svg viewBox="0 0 64 64">
-          <g style="fill:#3b5998"><path d="M0 0v64h64V0zm39.6 22h-2.8c-2.2 0-2.6 1.1-2.6 2.6V28h5.3l-.7 5.3h-4.6V47h-5.5V33.3H24V28h4.6v-4c0-4.6 2.8-7 6.9-7 2 0 3.6.1 4.1.2z"></path></g>
-          <g style="fill:white"><path d="M0,0H64V64H0ZM39.6 22h-2.8c-2.2 0-2.6 1.1-2.6 2.6V28h5.3l-.7 5.3h-4.6V47h-5.5V33.3H24V28h4.6v-4c0-4.6 2.8-7 6.9-7 2 0 3.6.1 4.1.2z"></path></g>
-        </svg>
-      </a>
-      <!-- X (Twitter) icon - 50px circular, black -->
-      <a href="https://twitter.com/igobono" target="_blank" class="social-icon" aria-label="x">
-        <svg viewBox="0 0 64 64">
-          <g style="fill:#000000"><path d="M0 0v64h64V0zm16 17.537h10.125l6.992 9.242 8.084-9.242h4.908L35.39 29.79 48 46.463h-9.875l-7.734-10.111-8.85 10.11h-4.908l11.465-13.105zm5.73 2.783 17.75 23.205h2.72L24.647 20.32z"></path></g>
-          <g style="fill:white"><path d="M0,0H64V64H0ZM16 17.537h10.125l6.992 9.242 8.084-9.242h4.908L35.39 29.79 48 46.463h-9.875l-7.734-10.111-8.85 10.11h-4.908l11.465-13.105zm5.73 2.783 17.75 23.205h2.72L24.647 20.32z"></path></g>
-        </svg>
-      </a>
-      <!-- Pinterest icon - 50px circular, brand color #cb2128 -->
-      <a href="https://www.pinterest.com/igobono/" target="_blank" class="social-icon" aria-label="pinterest">
-        <svg viewBox="0 0 64 64">
-          <g style="fill:#cb2128"><path d="M0 0v64h64V0zm32 48c-1.6 0-3.1-.2-4.5-.7.6-1 1.3-2.2 1.6-3.4.2-.7 1.1-4.4 1.1-4.4.6 1.1 2.2 2 3.9 2 5.1 0 8.6-4.7 8.6-11 0-4.7-4-9.2-10.1-9.2-7.6 0-11.4 5.5-11.4 10 0 2.8 1 5.2 3.3 6.1.4.1.7 0 .8-.4.1-.3.2-1 .3-1.3.1-.4.1-.5-.2-.9-.6-.8-1.1-1.7-1.1-3.1 0-4 3-7.7 7.9-7.7 4.3 0 6.7 2.6 6.7 6.1 0 4.6-2 8.5-5.1 8.5-1.7 0-2.9-1.4-2.5-3.1.5-2 1.4-4.2 1.4-5.7 0-1.3-.7-2.4-2.2-2.4-1.7 0-3.1 1.8-3.1 4.1 0 1.5.5 2.5.5 2.5s-1.8 7.4-2.1 8.7c-.3 1.2-.3 2.6-.3 3.7C19.9 44.2 16 38.6 16 32c0-8.8 7.2-16 16-16s16 7.2 16 16-7.2 16-16 16"></path></g>
-          <g style="fill:white"><path d="M0,0H64V64H0ZM32 48c-1.6 0-3.1-.2-4.5-.7.6-1 1.3-2.2 1.6-3.4.2-.7 1.1-4.4 1.1-4.4.6 1.1 2.2 2 3.9 2 5.1 0 8.6-4.7 8.6-11 0-4.7-4-9.2-10.1-9.2-7.6 0-11.4 5.5-11.4 10 0 2.8 1 5.2 3.3 6.1.4.1.7 0 .8-.4.1-.3.2-1 .3-1.3.1-.4.1-.5-.2-.9-.6-.8-1.1-1.7-1.1-3.1 0-4 3-7.7 7.9-7.7 4.3 0 6.7 2.6 6.7 6.1 0 4.6-2 8.5-5.1 8.5-1.7 0-2.9-1.4-2.5-3.1.5-2 1.4-4.2 1.4-5.7 0-1.3-.7-2.4-2.2-2.4-1.7 0-3.1 1.8-3.1 4.1 0 1.5.5 2.5.5 2.5s-1.8 7.4-2.1 8.7c-.3 1.2-.3 2.6-.3 3.7C19.9 44.2 16 38.6 16 32c0-8.8 7.2-16 16-16s16 7.2 16 16-7.2 16-16 16"></path></g>
-        </svg>
-      </a>
+      <div class="social-row">
+        <!-- Facebook - 50px circular, brand blue -->
+        <a href="https://facebook.com/igobono" target="_blank" class="social-icon" aria-label="facebook">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#3b5998"/><path d="M39.6 22h-2.8c-2.2 0-2.6 1.1-2.6 2.6V28h5.3l-.7 5.3h-4.6V47h-5.5V33.3H24V28h4.6v-4c0-4.6 2.8-7 6.9-7 2 0 3.6.1 4.1.2V22z" fill="white"/></svg>
+        </a>
+        <!-- X (Twitter) - 50px circular, black -->
+        <a href="https://twitter.com/igobono" target="_blank" class="social-icon" aria-label="x">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#000000"/><path d="M16 17.537h10.125l6.992 9.242 8.084-9.242h4.908L35.39 29.79 48 46.463h-9.875l-7.734-10.111-8.85 10.11h-4.908l11.465-13.105L16 17.537zm5.73 2.783l17.75 23.205h2.72L24.647 20.32h-2.917z" fill="white"/></svg>
+        </a>
+        <!-- Pinterest - 50px circular, brand red -->
+        <a href="https://www.pinterest.com/igobono/" target="_blank" class="social-icon" aria-label="pinterest">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#cb2128"/><path d="M32 48c-1.6 0-3.1-.2-4.5-.7.6-1 1.3-2.2 1.6-3.4.2-.7 1.1-4.4 1.1-4.4.6 1.1 2.2 2 3.9 2 5.1 0 8.6-4.7 8.6-11 0-4.7-4-9.2-10.1-9.2-7.6 0-11.4 5.5-11.4 10 0 2.8 1 5.2 3.3 6.1.4.1.7 0 .8-.4.1-.3.2-1 .3-1.3.1-.4.1-.5-.2-.9-.6-.8-1.1-1.7-1.1-3.1 0-4 3-7.7 7.9-7.7 4.3 0 6.7 2.6 6.7 6.1 0 4.6-2 8.5-5.1 8.5-1.7 0-2.9-1.4-2.5-3.1.5-2 1.4-4.2 1.4-5.7 0-1.3-.7-2.4-2.2-2.4-1.7 0-3.1 1.8-3.1 4.1 0 1.5.5 2.5.5 2.5s-1.8 7.4-2.1 8.7c-.3 1.2-.3 2.6-.3 3.7C19.9 44.2 16 38.6 16 32c0-8.8 7.2-16 16-16s16 7.2 16 16-7.2 16-16 16" fill="white"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
